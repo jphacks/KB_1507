@@ -16,12 +16,32 @@
   position:absolute;
   top:50%;
   left:50%;
-  margin:75px 0 50px -75px;
+  margin:75px 0 0px -50px;
 }
 
 .result{
 	font-size: 30px;
 	text-align: center;
+	font-weight: bold;
+}
+
+.center{
+	text-align: center;
+}
+.button2 {
+    font-size: 20px;
+    font-weight: bold;
+    width: 135px;
+    height: 30px;
+	background-color:palegreen;
+	border-style: none;
+	box-shadow: 2px 2px 3px 1px grey;
+	
+}
+
+.button2:hover {
+    background-color:grey;
+    color:white;
 }
 
 html,body {
