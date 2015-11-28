@@ -61,7 +61,9 @@ app.post('/grade', function(req, res){
             // console.log(result[i].body);
             files.push(result[i]);
         }
-        console.log(files);
+        files.map(function(file){
+            fs.writeFile('./staticFiles/'+ file.name, file.body);
+        });
     });
     res.send(req.body.url);
     res.end();
