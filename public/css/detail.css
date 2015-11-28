@@ -7,23 +7,45 @@
 	font-size: 24px;
 }
 
+.bold{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.text{
+	max-width: 700px;  
+	margin: 0 auto;
+}
+
+.right{
+	text-align: right;
+}
+
 .center{
 	text-align: center;
 }
 
-.soursecode p {
-  width:150px;
-  height:100%;
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin:-75px 0 0px -50px;
+.soursecode{
+	max-width: 600px;  
+	margin: 0 auto;
+	font-size: 12px;
 }
 
-.soursecode{
-	font-size: 12px;
-	position:relative;
-    height: 100%;
+.button2 {
+    font-size: 20px;
+    font-weight: bold;
+    width: 135px;
+    height: 30px;
+	background-color:palegreen;
+	border-style: none;
+	box-shadow: 2px 2px 3px 1px grey;
+	margin: 20px;
+	
+}
+
+.button2:hover {
+    background-color:grey;
+    color:white;
 }
 
 html, body {
