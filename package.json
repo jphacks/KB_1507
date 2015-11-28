@@ -1,0 +1,19 @@
+{
+  "name": "kb_07",
+  "version": "1.0.0",
+  "description": "### 解決出来ること ### 今後の展望 ### 注力したこと（こだわり等） *  *",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com_sztm:jphacks/KB_07.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
