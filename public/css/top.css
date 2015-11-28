@@ -21,7 +21,7 @@ img {
 #left_side {
 	width:50%;
 	height:100%;
-	background-color:red;
+	background-color:#f0e68c;
 	float: left;
 
 }
@@ -29,9 +29,20 @@ img {
 #right_side {
 	width:50%;
 	height:100%;
-	background-color:blue;
+	background-color:#000;
 	float: left;
 }
+
+#center_box{
+	position:absolute;
+	width:90%;
+	height: 90%;
+	left:0;
+	right:0;
+	margin:0 auto;
+	margin-top: 40vh;
+}
+
 
 #page_wrapper {
 	position:relative;
@@ -40,4 +51,8 @@ img {
 	margin-right: auto;
 	text-align:center;
 	z-index:1;
+	background-color:#fff;
+	padding:30px;
+	margin-top:30vh;
+
 }
