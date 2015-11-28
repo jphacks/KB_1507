@@ -22,8 +22,10 @@
     <div id="page_wrapper">
     	<h1>How old is your web page?</h1>
     	<div>あなたのWebページの年齢を鑑定します。</div>
-    	<input type="text">
-    	<input type="submit" value="鑑定">
+    	<form action="/grade" method="post">
+    		<input type="url" name="url">
+    		<input type="submit" value="鑑定">
+    	</form>
     </div>
     </body>
 </html>
