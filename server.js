@@ -21,7 +21,7 @@ app.use(session({
     saveUninitialized: true,
     secret: 'keyboard cat',
     cookie: {
-        maxAge: 60000
+        maxAge: 300000
     }
 }));
 
