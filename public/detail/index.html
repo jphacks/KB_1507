@@ -6,8 +6,8 @@
 	<link rel="stylesheet" href="../css/detail.css">
 	<script type="text/javascript" src="../syntaxhighlighter/scripts/shCore.js"></script>
 	<script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushJScript.js"></script>
-	<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushCss.js"></script>
-	<script type="text/javascript" src="syntaxhighlighter/scripts/shBrushXml.js"></script>
+	<script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="../syntaxhighlighter/scripts/shBrushXml.js"></script>
 	<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/shCoreDefault.css">
 	<link type="text/css" rel="stylesheet" href="../syntaxhighlighter/styles/shCore.css">
 	<script type="text/javascript">SyntaxHighlighter.all()</script>
@@ -15,13 +15,31 @@
 </head>
 <body>
 <div id="title">TITLE</div>
-<div>I want to say what is cool in this section!</div>
 <div class="result">"detail"</div>
-<!-- ここからソースコード書く奴 -->
-<div class="sourse">
-	uwaaaaaaaaaaaaaaaaaaa
-</div>
+<div>I want to say what is cool in this section!</div>
 
+
+<div class="soursecode">
+	<p>
+	<!-- ここから"html"のソースコード書く奴 
+	"brush:html:[1,2,3,...]"のようにすると数字を入れた行が強調されます-->
+	<pre class="brush:html">
+	
+	</pre><!-- ここまで"html"ソースコード書く奴 -->
+
+	<!-- ここから"css"のソースコード書く奴 
+	"brush:html:[1,2,3,...]"のようにすると数字を入れた行が強調されます-->
+	<pre class="brush:css">
+
+	</pre><!-- ここまで"css"ソースコード書く奴 -->
+
+	<!-- ここから"js"のソースコード書く奴 
+	"brush:html:[1,2,3,...]"のようにすると数字を入れた行が強調されます-->
+	<pre class="brush:js">
+
+	</pre><!-- ここまで"js"ソースコード書く奴 -->
+	</p>
+</div>
 <div>check again!!</div>
 </body>
 </html>
