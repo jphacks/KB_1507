@@ -4,6 +4,8 @@ var request = require('request');
 var fs = require('fs');
 var jsdom = require("jsdom");
 var Promise = require('bluebird');
+var path = require('path');
+var url = require('url');
 
 Promise.promisifyAll(request);
 Promise.promisifyAll(fs);
@@ -45,8 +47,8 @@ app.post('/grade', function(req, res){
         return Promise.resolve(static_data_list);
     }).then(function(list){
         console.log(list);
-        return Promise.all(list.map(function(elem){
-            return getStaticData();
+        return Promise.all(list.map(function(file_path){
+            return getStaticData(file_path, req.body.url);
         }));
     });
     res.send(req.body.url);
@@ -55,3 +57,12 @@ app.post('/grade', function(req, res){
 
 app.listen(58000);
 console.log('server is running at localhost:58000');
+
+function getStaticData(file_path, url){
+    var file = {};
+    file.name = path.basename(file_path);
+    if(file_path[0] == '/'){
+        var host_name = url.parse(req.body.url).host;
+        console.log(host_name);
+    }
+}
