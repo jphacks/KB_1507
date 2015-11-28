@@ -14,8 +14,9 @@ Promise.promisifyAll(jsdom);
 
 var app = express();
 
+var results = {};
+
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname + '/public'));
 app.use(session({
     resave: false,
     saveUninitialized: true,
@@ -31,9 +32,11 @@ app.use(function(req, res, next){
     next();
 });
 
+app.use(express.static(__dirname + '/public'));
 app.post('/grade', function(req, res){
+    results[req.sessionID] = {stauts: 'processing'};
     res.status(200);
-    res.send(req.body.url);
+    res.redirect('/result');
     res.end();
     var files = [];
     request.getAsync(req.body)
@@ -44,7 +47,8 @@ app.post('/grade', function(req, res){
             body: body
         });
         return jsdom.envAsync(body);
-    }).then(function(window){
+    })
+    .then(function(window){
         var static_data_list = [];
         var links = window.document.getElementsByTagName('link');
         for(var i = 0; i < links.length; i++){
@@ -62,12 +66,14 @@ app.post('/grade', function(req, res){
             }
         }
         return Promise.resolve(static_data_list);
-    }).then(function(list){
+    })
+    .then(function(list){
         console.log(list);
         return Promise.all(list.map(function(file_path){
             return getStaticData(file_path, req.body.url);
         }));
-    }).then(function(result){
+    })
+    .then(function(result){
         for(var i = 0; i < result.length; i++){
             // console.log(result[i].name);
             // console.log(result[i].body);
@@ -76,7 +82,38 @@ app.post('/grade', function(req, res){
         files.map(function(file){
             fs.writeFile('./staticFiles/'+ file.name, file.body);
         });
+        return Promise.resolve();
+    })
+    .then(function(){
+        results[req.sessionID].score = 100;
+        results[req.sessionID].status = 'done';
     });
+});
+
+app.get('/score', function(req, res){
+    if(!results[req.sessionID]) {
+        res.status(400);
+        res.send('あなたからのリクエストを受けていないかタイムアウトしました');
+        res.end();
+    } else {
+        var result = results[req.sessionID];
+        var interval = setInterval(function(){
+            if(result.status == 'done'){
+                res.status(200);
+                res.send(String(result.score));
+                res.end();
+                clearInterval(interval);
+            } else if(result.status == 'error'){
+                res.status(500);
+                res.send('診断中にエラーが発生しました');
+                res.end();
+                clearInterval(interval);
+            }
+        }, 1000);
+        setTimeout(function(){
+            clearInterval(interval);
+        }, 60000);
+    }
 });
 
 app.listen(58000);
