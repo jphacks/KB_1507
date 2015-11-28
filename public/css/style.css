@@ -17,10 +17,19 @@ html, body {
 #left_side {
 	width:50%;
 	height:100%;
-background-color:red;
+	background-color:red;
+	float: left;
+}
+
+#right_side {
+	width:50%;
+	height:100%;
+	background-color:blue;
+	float: left;
 }
 
 #page_wrapper {
+	position:relative;
 	width: 500px;
 	margin-left: auto;
 	margin-right: auto;
