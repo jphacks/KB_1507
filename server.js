@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var request = require('request');
 var fs = require('fs');
 var jsdom = require("jsdom");
@@ -15,16 +16,29 @@ var app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: 'keyboard cat',
+    cookie: {
+        maxAge: 60000
+    }
+}));
+
+app.use(function(req, res, next){
+    console.log(req.session);
+    console.log(req.sessionID);
+    next();
+});
 
 app.post('/grade', function(req, res){
-    // console.log(req.body);
     res.status(200);
+    res.send(req.body.url);
+    res.end();
     var files = [];
     request.getAsync(req.body)
     .then(function(result){
         var body = result[1];
-        // console.log(body);
-        // fs.writeFile('./getData.html', body);
         files.push({
             name: 'index.html',
             body: body
@@ -37,7 +51,6 @@ app.post('/grade', function(req, res){
             var href = links[i].getAttribute('href');
             var rel = links[i].getAttribute('rel');
             if(href && rel == 'stylesheet'){
-                // console.log(href);
                 static_data_list.push(href);
             }
         }
@@ -45,7 +58,6 @@ app.post('/grade', function(req, res){
         for(var j = 0; j < scripts.length; j++){
             var src = scripts[j].getAttribute('src');
             if(src){
-                // console.log(src);
                 static_data_list.push(src);
             }
         }
@@ -65,8 +77,6 @@ app.post('/grade', function(req, res){
             fs.writeFile('./staticFiles/'+ file.name, file.body);
         });
     });
-    res.send(req.body.url);
-    res.end();
 });
 
 app.listen(58000);
