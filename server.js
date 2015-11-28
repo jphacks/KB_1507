@@ -6,8 +6,10 @@ var app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
-app.post('/result', function(req, res){
+app.post('/grade', function(req, res){
     console.log(req.body);
+    res.status(200);
+    res.end();
 });
 
 app.listen(58000);
