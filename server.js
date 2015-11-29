@@ -82,7 +82,14 @@ app.post('/grade', function(req, res){
         files.map(function(file){
             fs.writeFile('./staticFiles/'+ file.name, file.body);
         });
-        return Promise.resolve();
+        return Promise.resolve(files);
+    })
+    .then(function(){
+        var len = files.length;
+        var points = [];
+        for(var i = 0; i < len; i++){
+            files[i].points = checkLegacy(files[i]);
+        }
     })
     .then(function(){
         results[req.sessionID].score = 100;
@@ -113,6 +120,16 @@ app.post('/score', function(req, res){
         setTimeout(function(){
             clearInterval(interval);
         }, 60000);
+    }
+});
+
+app.post('/detail', function(req, res){
+    if(!results[req.sessionID]) {
+        res.status(400);
+        res.send('あなたからのリクエストを受けていないかタイムアウトしました');
+        res.end();
+    } else {
+
     }
 });
 
