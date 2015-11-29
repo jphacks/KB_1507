@@ -19,7 +19,7 @@
   margin:75px 0 0px -50px;
 }
 
-.result{
+#result{
 	font-size: 30px;
 	text-align: center;
 	font-weight: bold;
@@ -36,7 +36,7 @@
 	background-color:palegreen;
 	border-style: none;
 	box-shadow: 2px 2px 3px 1px grey;
-	
+
 }
 
 .button2:hover {
@@ -49,8 +49,3 @@ html,body {
    height: 100%;
    margin: 0;
 }
-
-
-
-
-
