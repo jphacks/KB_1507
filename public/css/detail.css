@@ -13,7 +13,7 @@
 }
 
 .text{
-	max-width: 700px;  
+	max-width: 700px;
 	margin: 0 auto;
 }
 
@@ -25,8 +25,8 @@
 	text-align: center;
 }
 
-.soursecode{
-	max-width: 600px;  
+.sourcecode{
+	max-width: 600px;
 	margin: 0 auto;
 	font-size: 12px;
 }
@@ -40,7 +40,7 @@
 	border-style: none;
 	box-shadow: 2px 2px 3px 1px grey;
 	margin: 20px;
-	
+
 }
 
 .button2:hover {
