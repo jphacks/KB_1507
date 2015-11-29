@@ -133,6 +133,7 @@ app.get('/point', function(req, res){
         res.end();
     } else {
         res.status(200);
+        res.header("Content-Type", "text/plain");
         res.send(JSON.stringify(results[req.sessionID]));
         res.end();
     }
@@ -156,7 +157,8 @@ function getStaticData(file_path, page_url){
 function checkLegacy(file){
     var points = [];
     for(var i = 0; i < 2; i++){
-        var line = Math.random() * file.body.length;
+        var line_length = file.body.length - file.body.replace(/\n/g, "").length + 1;
+        var line = Math.ceil(Math.random() * line_length);
         points.push({
             line: line,
             comment: '書き方が古いです',
