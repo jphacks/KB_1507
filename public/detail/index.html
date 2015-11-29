@@ -5,13 +5,18 @@
 	<title>Cool title</title>
 	<link rel="stylesheet" href="../css/detail.css">
 	<link type="text/css" rel="stylesheet" href="../css/syntaxhighlighter/styles/shCoreDefault.css">
-	<link type="text/css" rel="stylesheet" href="../css/syntaxhighlighter/styles/shCore.css">
 	<script type="text/javascript" src="../js/syntaxhighlighter/scripts/shCore.js"></script>
 	<script type="text/javascript" src="../js/syntaxhighlighter/scripts/shBrushJScript.js"></script>
 	<script type="text/javascript" src="../js/syntaxhighlighter/scripts/shBrushCss.js"></script>
 	<script type="text/javascript" src="../js/syntaxhighlighter/scripts/shBrushXml.js"></script>
-	<script src="../js/detail.js" charset="utf-8"></script>
-	<script type="text/javascript">SyntaxHighlighter.all();</script>
+	<!-- <link type="text/css" rel="stylesheet" href="../css/syntaxhighlighter/styles/shCore.css"> -->
+	<!-- <script type="text/javascript">SyntaxHighlighter.all();</script> -->
+
+	<!-- <script type="text/javascript" src="../js/syntaxhighlighter/scripts/shCore.js"></script> -->
+	<!-- <script type="text/javascript" src="../js/syntaxhighlighter/scripts/shBrushJScript.js"></script> -->
+	<!-- <link type="text/css" rel="stylesheet" href="../css/syntaxhighlighter/styles/shCoreDefault.css"/> -->
+	<script type="text/javascript" src="../js/detail.js" charset="utf-8"></script>
+	<!-- <script type="text/javascript">SyntaxHighlighter.all();</script> -->
 </head>
 <body>
 <div id="title">Detail Result</div>
@@ -22,7 +27,12 @@
 </div>
 
 <div id="sourcecode">
-
+	<pre class="brush: js;">
+	function helloSyntaxHighlighter()
+	{
+		return "hi!";
+	}
+	</pre>
 </div>
 
 <div class="text">
