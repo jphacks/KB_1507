@@ -34,7 +34,7 @@ app.use(function(req, res, next){
 
 app.use(express.static(__dirname + '/public'));
 app.post('/grade', function(req, res){
-    results[req.sessionID] = {stauts: 'processing'};
+    results[req.sessionID] = {status: 'processing'};
     res.status(200);
     res.redirect('/result');
     res.end();
@@ -82,11 +82,21 @@ app.post('/grade', function(req, res){
         files.map(function(file){
             fs.writeFile('./staticFiles/'+ file.name, file.body);
         });
-        return Promise.resolve();
+        return Promise.resolve(files);
     })
     .then(function(){
-        results[req.sessionID].score = 100;
-        results[req.sessionID].status = 'done';
+        var len = files.length;
+        var points = [];
+        for(var i = 0; i < len; i++){
+            files[i].points = checkLegacy(files[i]);
+        }
+        Promise.resolve();
+    })
+    .then(function(){
+        var result = results[req.sessionID];
+        result.score = 100;
+        result.status = 'done';
+        result.files = files;
     });
 });
 
@@ -116,6 +126,19 @@ app.post('/score', function(req, res){
     }
 });
 
+app.post('/point', function(req, res){
+    if(!results[req.sessionID]) {
+        res.status(400);
+        res.send('あなたからのリクエストを受けていないかタイムアウトしました');
+        res.end();
+    } else {
+        res.status(200);
+        res.header("Content-Type", "text/plain");
+        res.send(JSON.stringify(results[req.sessionID]));
+        res.end();
+    }
+});
+
 app.listen(58000);
 console.log('server is running at localhost:58000');
 
@@ -129,4 +152,18 @@ function getStaticData(file_path, page_url){
         file.body = result[1];
         return Promise.resolve(file);
     });
+}
+
+function checkLegacy(file){
+    var points = [];
+    for(var i = 0; i < 2; i++){
+        var line_length = file.body.length - file.body.replace(/\n/g, "").length + 1;
+        var line = Math.ceil(Math.random() * line_length);
+        points.push({
+            line: line,
+            comment: '書き方が古いです',
+            type: 'old_rule'
+        });
+    }
+    return points;
 }
