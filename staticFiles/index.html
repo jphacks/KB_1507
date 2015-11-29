@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>
+        Tomoya Suzuki
+    </title>
+    <link rel="stylesheet" href="CSS/style.css" type="text/css" />
+    <link rel="shortcut icon" href="IMG/favicon.ico">
+    <script type="text/javascript" src="JS/jquery-2.1.0.min.js"></script>
+    <script src="JS/jquery.peelback.js"></script>
+    <script type="text/javascript" src="JS/index.js"></script>
+</head>
+<body>
+    <div id="container" >
+        <div id="header" >
+            <img src="IMG/header.jpg" class="notselect" alt="[ヘッダ写真]" width=960 height=300>
+            <div class="shine2" id="title" >
+                <div id="title_name" >
+                    <h1 id="shine">鈴木 智也</h1>
+                    <span style="font-size: 18px; letter-spacing: 0.2em;">Suzuki Tomoya</span>
+                </div>
+
+                <span >名古屋工業大学大学院 工学研究科</span><br>
+                <span >情報工学専攻 1年</span><br>
+                <span >新谷・大囿研究室</span><br>
+                <span >suzutomo</span>
+                <img src="IMG/at.png" alt="[at]" width=13 height=13>
+                <span >toralab.org</span>
+            </div>
+        </div>
+        <div id="menu" >
+            <ul>
+                <li><span id="new" onclick="link('new')">新着情報</span></li>
+                <li><span id="profile" onclick="link('profile')">プロフィール</span></li>
+                <li><span id="achievement" onclick="link('achievement')">活動実績</span></li>
+                <li><span id="link" onclick="link('link')">リンク</span></li>
+            </ul>
+
+        </div>
+        <div id="body" >
+        </div>
+        <div id="footer" >
+        </div>
+    </div>
+
+    <script>
+        link('new');
+    </script>
+</body>
+</html>
