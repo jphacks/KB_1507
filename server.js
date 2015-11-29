@@ -90,7 +90,7 @@ app.post('/grade', function(req, res){
     });
 });
 
-app.get('/score', function(req, res){
+app.post('/score', function(req, res){
     if(!results[req.sessionID]) {
         res.status(400);
         res.send('あなたからのリクエストを受けていないかタイムアウトしました');
