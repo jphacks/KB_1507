@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
     getScore(function(){
-        alert('ok');
+        console.log('get score');
     });
 });
 
@@ -9,8 +9,7 @@ function getScore(callback){
 
     xhr.onload = function(response){
         var dom = document.getElementById('result');
-        console.log(xhr.response);
-        dom.innerHTML = response;
+        dom.innerHTML = xhr.response;
         callback();
     };
 
