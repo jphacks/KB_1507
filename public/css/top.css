@@ -57,7 +57,7 @@ img {
 
 #page_wrapper {
 	position:relative;
-	width: 500px;
+	width: 700px;
 	margin-left: auto;
 	margin-right: auto;
 	text-align:center;
@@ -65,5 +65,18 @@ img {
 	background-color:rgba(300,300,300,0.6);
 	padding:20px;
 	margin-top:25vh;
+}
 
+input[type="submit"]{
+	width:100px;
+	height:30px;
+	background-color: #00BFFF;
+	color:#000;
+
+}
+
+input[type="submit"][disabled]{
+	background-color:#7FFFD4;
+	color:#808080;
+	border-style:none;
 }

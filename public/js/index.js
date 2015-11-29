@@ -7,6 +7,8 @@ function check(){
    
    if(url_text.match(/https?:\/\/[\w/:%#\$\&\?\(\)\~\.=\+\-]+/)){
    	document.getElementById('submit').disabled=false;
+   }else{
+   	document.getElementById('submit').disabled=true;
    }
 
 }
