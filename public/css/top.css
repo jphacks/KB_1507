@@ -45,6 +45,7 @@ img {
 #title_box{
 	position:absolute;
 	width:80%;
+	top:5px;
 	left:0;
 	right:0;
 	margin:0 auto;
@@ -63,6 +64,6 @@ img {
 	z-index:1;
 	background-color:rgba(300,300,300,0.6);
 	padding:20px;
-	margin-top:30vh;
+	margin-top:20vh;
 
 }
