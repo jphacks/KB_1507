@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){
+    // SyntaxHighlighter.all();
+    // console.log(SyntaxHighlighter);
+
     getScore(function(res){
+
         console.log('get point');
         var result = JSON.parse(res);
         var files = result.files;
@@ -24,16 +28,19 @@ document.addEventListener('DOMContentLoaded', function(){
                 var code_dom = document.createElement('pre');
                 var parsed_filename = file.name.split('.');
                 var exet = parsed_filename[parsed_filename.length-1];
-                code_dom.classList.add('blush:'+exet);
+                code_dom.classList.add('blush:'+exet+';');
                 var splited_body = file.body.split('\n');
                 var start_line = point.line - 5;
                 if(start_line < 1){start_line=1;}
                 var end_line = point.line + 5;
                 if(start_line > splited_body.length){start_line=splited_body.length;}
 
+                var code = '';
                 for(var k = start_line-1; k < end_line; k++){
-                    code_dom.innerHTML += splited_body[k] + '\n';
+                    code += splited_body[k] + '\n';
                 }
+                console.log(code);
+                code_dom.innerHTML = code;
 
                 point_dom.appendChild(comment_dom);
                 point_dom.appendChild(name_dom);
@@ -42,7 +49,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
             }
         }
+        // parent.innerHTML = '<pre class="brush:js;">\nfunction helloSyntaxHighlighter()\n    	{\nreturn "hiiii!";\n}\n</pre>';
         SyntaxHighlighter.all();
+        // console.log(SyntaxHighlighter);
         console.log('done');
     });
 });
@@ -58,7 +67,7 @@ function getScore(callback){
         console.error(error);
     };
 
-    xhr.open('POST', '/point');
+    xhr.open('POST', '/point', false);
 
     xhr.send();
 }
