@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/top.css">
 </head>
 <body>
-    Hello, World!
-</body>
+	<div id="background">
+		<div id="left_side">
+			<img src="image/cube.svg">
+		</div>
+		<div id="right_side">
+			<img src="image/cube.svg">
+		</div>
+		<div id="center_box">
+			<img src="image/cube.svg">
+		</div>
+	</div>
+
+
+    <div id="page_wrapper">
+    	<h1>How old is your web page?</h1>
+    	<div>あなたのWebページの年齢を鑑定します。</div>
+    	<form action="/grade" method="post">
+    		<input type="url" name="url">
+    		<input type="submit" value="鑑定">
+    	</form>
+    </div>
+    </body>
 </html>
