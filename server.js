@@ -90,10 +90,13 @@ app.post('/grade', function(req, res){
         for(var i = 0; i < len; i++){
             files[i].points = checkLegacy(files[i]);
         }
+        Promise.resolve();
     })
     .then(function(){
-        results[req.sessionID].score = 100;
-        results[req.sessionID].status = 'done';
+        var result = results[req.sessionID];
+        result.score = 100;
+        result.status = 'done';
+        result.files = files;
     });
 });
 
@@ -123,13 +126,15 @@ app.post('/score', function(req, res){
     }
 });
 
-app.post('/detail', function(req, res){
+app.get('/point', function(req, res){
     if(!results[req.sessionID]) {
         res.status(400);
         res.send('あなたからのリクエストを受けていないかタイムアウトしました');
         res.end();
     } else {
-
+        res.status(200);
+        res.send(JSON.stringify(results[req.sessionID]));
+        res.end();
     }
 });
 
@@ -146,4 +151,17 @@ function getStaticData(file_path, page_url){
         file.body = result[1];
         return Promise.resolve(file);
     });
+}
+
+function checkLegacy(file){
+    var points = [];
+    for(var i = 0; i < 2; i++){
+        var line = Math.random() * file.body.length;
+        points.push({
+            line: line,
+            comment: '書き方が古いです',
+            type: 'old_rule'
+        });
+    }
+    return points;
 }
