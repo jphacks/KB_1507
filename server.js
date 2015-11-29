@@ -34,7 +34,7 @@ app.use(function(req, res, next){
 
 app.use(express.static(__dirname + '/public'));
 app.post('/grade', function(req, res){
-    results[req.sessionID] = {stauts: 'processing'};
+    results[req.sessionID] = {status: 'processing'};
     res.status(200);
     res.redirect('/result');
     res.end();
@@ -126,7 +126,7 @@ app.post('/score', function(req, res){
     }
 });
 
-app.get('/point', function(req, res){
+app.post('/point', function(req, res){
     if(!results[req.sessionID]) {
         res.status(400);
         res.send('あなたからのリクエストを受けていないかタイムアウトしました');

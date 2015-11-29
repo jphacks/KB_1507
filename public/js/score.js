@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', function(){
+    // ぐるぐる表示
+        // 親要素の取得
+        // ぐるぐるの生成
+        // 親にぐるぐるを追加
     getScore(function(){
         console.log('get score');
+        // ぐるぐる非表示
+            // ぐるぐるの取得
+            // ぐるぐるの非表示
     });
 });
 
