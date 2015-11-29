@@ -40,8 +40,10 @@ img {
 	left:0;
 	right:0;
 	margin:0 auto;
-	margin-top: 10vh;
+	margin-top: 5vh;
 }
+
+
 
 
 #page_wrapper {
@@ -52,7 +54,7 @@ img {
 	text-align:center;
 	z-index:1;
 	background-color:#fff;
-	padding:30px;
+	padding:20px;
 	margin-top:30vh;
 
 }
