@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="css/top.css">
+    <script src="js/index.js" charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
 	<div id="background">
@@ -14,7 +15,7 @@
 			<img src="image/cube.svg">
 		</div>
 		<div id="center_box">
-			<img src="image/background_line.svg">
+				<object type="image/svg+xml" data="image/background_line.svg" width="100%" height="100%"></object>
 		</div>
 	</div>
 
@@ -23,8 +24,8 @@
     	
     	<div>あなたのWebページの年齢を鑑定します。</div>
     	<form action="/grade" method="post">
-    		<input type="url" name="url">
-    		<input type="submit" value="鑑定">
+    		<input type="url" name="url" id="url" onKeyup="check()">
+    		<input type="submit" value="鑑定" id="submit">
     	</form>
     </div>
     </body>
